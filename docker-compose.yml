@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  jellyfin_learn:
+    image: 34010493/jellyfin
+    user: 0:0
+    volumes:
+      - /media/mediaserver/jellyfin_learn/cache:/cache
+      - /media/mediaserver/jellyfin_learn/config:/config
+      - /media/learn:/media
+    devices:
+      - /dev/dri:/dev/dri
+    ports:
+      - "18096:8096"
+    restart: unless-stopped
+
+  jellyfin_programming:
+    image: 34010493/jellyfin
+    user: 0:0
+    volumes:
+      - /media/mediaserver/jellyfin_programming/cache:/cache
+      - /media/mediaserver/jellyfin_programming/config:/config
+      - /media/learn:/media
+    devices:
+      - /dev/dri:/dev/dri
+    ports:
+      - "28096:8096"
+    restart: unless-stopped
+
+  jellyfin_ss:
+    image: 34010493/jellyfin
+    user: 0:0
+    volumes:
+      - /media/mediaserver/jellyfin_ss/cache:/cache
+      - /media/mediaserver/jellyfin_ss/config:/config
+      - /media/ss:/media
+    devices:
+      - /dev/dri:/dev/dri
+    ports:
+      - "22222:8096"
+    restart: unless-stopped
